@@ -1,11 +1,9 @@
 # puts "Enter a word:"
 # word = gets.chomp.strip
 word = "word"
-word_array = word.split("")
+word_array = word.upcase.split("")
 counter = 0
 numbers = []
-
-puts numbers
 
 points = {
   # nil => 0,
@@ -18,22 +16,14 @@ points = {
   ["Q", "Z"] => 10
 }
 
-=begin
-[w,o,r,d]
-[4, 1, 1, 2]
-reduce(:+)
-
-[k]
-[5]
-=end
-
 while counter < word_array.length
-  points.each do |letters, score|
-    if letters.include?(word_array[counter]) == true
+  points.each do |letter, score|
+    puts "testing: #{word_array[counter]} against #{letter}"
+    if letter.include?(word_array[counter]) == true
       numbers.push(score)
     end
   end
   counter += 1
 end
 
-puts numbers.reduce(:+)
+puts "total is #{numbers.reduce(:+)}"
